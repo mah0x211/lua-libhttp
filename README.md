@@ -100,7 +100,7 @@ parse HTTP response.
 
 **Field names of response-line table**
 
-- `method:number`: version.
+- `version:number`: version.
 - `status:number`: status code (`1XX`, `2XX`, `3XX`, `4XX`, `5XX`).
 - `reason:string`: reason-phrase string.
 
