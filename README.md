@@ -11,6 +11,12 @@ HTTP protocol parser for lua.
 - luarocks-fetch-gitrec: https://github.com/siffiejoe/luarocks-fetch-gitrec
 
 
+## Installation
+
+```sh
+luarocks install http --from=http://mah0x211.github.io/rocks/
+```
+
 
 ## Create new http parser object
 
