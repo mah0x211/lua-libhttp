@@ -235,9 +235,9 @@ static int gc_lua( lua_State *L )
 static int new_lua( lua_State *L )
 {
     lhttp_t *h = NULL;
-    int maxurilen = luaL_optint( L, 1, DEFAULT_MAX_URILEN );
-    int maxhdrlen = luaL_optint( L, 2, DEFAULT_MAX_HDRLEN );
-    int maxhdr = luaL_optint( L, 3, DEFAULT_MAX_HDR );
+    int maxurilen = (int)luaL_optinteger( L, 1, DEFAULT_MAX_URILEN );
+    int maxhdrlen = (int)luaL_optinteger( L, 2, DEFAULT_MAX_HDRLEN );
+    int maxhdr = (int)luaL_optinteger( L, 3, DEFAULT_MAX_HDR );
     
     if( maxurilen > UINT16_MAX ){
         return luaL_argerror( L, 1, "maxurilen must be less than UINT16_MAX" );
