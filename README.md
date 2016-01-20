@@ -7,7 +7,7 @@ HTTP protocol parser for lua.
 
 ## Dependencies
 
-- http: https://github.com/mah0x211/http
+- http: https://github.com/mah0x211/libhttp
 - luarocks-fetch-gitrec: https://github.com/siffiejoe/luarocks-fetch-gitrec
 
 
