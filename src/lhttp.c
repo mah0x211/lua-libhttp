@@ -20,7 +20,7 @@
  *  DEALINGS IN THE SOFTWARE.
  *
  *  lhttp.c
- *  lua-http
+ *  lua-libhttp
  *
  *  Created by Masatoshi Teruya on 15/06/08.
  *
@@ -33,7 +33,7 @@
 #include <lauxlib.h>
 #include "http.h"
 
-#define MODULE_MT   "http"
+#define MODULE_MT   "libhttp"
 
 #define DEFAULT_MAX_URILEN  3072
 #define DEFAULT_MAX_HDRLEN  4352
@@ -265,7 +265,7 @@ static int new_lua( lua_State *L )
 }
 
 
-LUALIB_API int luaopen_http( lua_State *L )
+LUALIB_API int luaopen_libhttp( lua_State *L )
 {
     struct luaL_Reg mmethods[] = {
         { "__gc", gc_lua },

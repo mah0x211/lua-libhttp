@@ -1,11 +1,11 @@
 CC=@CC@
 CFLAGS=@CFLAGS@ -Wall -Wno-trigraphs -Wmissing-field-initializers -Wmissing-prototypes -Wreturn-type -Wmissing-braces -Wparentheses -Wswitch -Wunused-function -Wunused-label -Wunused-parameter -Wunused-variable -Wunused-value -Wuninitialized -Wunknown-pragmas -Wshadow -Wsign-compare
-CPPFLAGS=-I. -I../deps/http/src -I./@LHTTP_SRC@ @CPPFLAGS@
+CPPFLAGS=-I. -I../deps/libhttp/src -I./@LHTTP_SRC@ @CPPFLAGS@
 LDFLAGS=@LIBFLAG@
 LIBS=@LIBS@
 TARGET=@PACKAGE@.@LIB_EXTENSION@
 SRC=$(wildcard *.c)
-SRC+=$(wildcard ../deps/http/src/*.c)
+SRC+=$(wildcard ../deps/libhttp/src/*.c)
 OBJ=$(SRC:.c=.@OBJ_EXTENSION@)
 LIBDIR=@LIBDIR@
 

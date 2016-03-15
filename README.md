@@ -1,4 +1,4 @@
-lua-http
+lua-libhttp
 =========
 
 HTTP protocol parser for lua.
@@ -7,20 +7,20 @@ HTTP protocol parser for lua.
 
 ## Dependencies
 
-- http: https://github.com/mah0x211/libhttp
+- libhttp: https://github.com/mah0x211/libhttp
 - luarocks-fetch-gitrec: https://github.com/siffiejoe/luarocks-fetch-gitrec
 
 
 ## Installation
 
 ```sh
-luarocks install http --from=http://mah0x211.github.io/rocks/
+luarocks install libhttp --from=http://mah0x211.github.io/rocks/
 ```
 
 
-## Create new http parser object
+## Create new libhttp parser object
 
-### parser, err = http.new( [maxheader:number] )
+### parser, err = libhttp.new( [maxheader:number] )
 
 **Parameters**
 
@@ -29,7 +29,7 @@ luarocks install http --from=http://mah0x211.github.io/rocks/
 
 **Returns**
 
-1. `parser:userdata`: http parser object on success. or, a nil on failure.
+1. `parser:userdata`: libhttp parser object on success. or, a nil on failure.
 2. `err:string`: error message.
 
 
@@ -109,21 +109,21 @@ parse HTTP response.
 
 **HTTP Method**
 
-- `http.MGET`: GET
-- `http.MHEAD`: HEAD
-- `http.MPOST`: POST
-- `http.MPUT`: PUT
-- `http.MDELETE`: DELETE
-- `http.MOPTIONS`: OPTIONS
-- `http.MTRACE`: TRACE
-- `http.MCONNECT`: CONNECT
+- `libhttp.MGET`: GET
+- `libhttp.MHEAD`: HEAD
+- `libhttp.MPOST`: POST
+- `libhttp.MPUT`: PUT
+- `libhttp.MDELETE`: DELETE
+- `libhttp.MOPTIONS`: OPTIONS
+- `libhttp.MTRACE`: TRACE
+- `libhttp.MCONNECT`: CONNECT
 
 
 **HTTP Version**
 
-- `http.V09`: HTTP/0.9
-- `http.V10`: HTTP/1.0
-- `http.V11`: HTTP/1.1
+- `libhttp.V09`: HTTP/0.9
+- `libhttp.V10`: HTTP/1.0
+- `libhttp.V11`: HTTP/1.1
 
 
 **Return Code**
@@ -160,7 +160,7 @@ local reqstr =
     "__utma=xxxxxxxxx.xxxxxxxxxx.xxxxxxxxxx.xxxxxxxxxx.xxxxxxxxxx.x; " ..
     "__utmz=xxxxxxxxx.xxxxxxxxxx.x.x.utmccn=(referral)|utmcsr=reader.livedoor.com|utmcct=/reader/|utmcmd=referral\r\n" ..
     "\r\n";
-local parser = require('http').new();
+local parser = require('libhttp').new();
 local req = {
 	header = {}	
 };

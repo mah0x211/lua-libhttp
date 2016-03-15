@@ -1,11 +1,12 @@
-package = "http"
-version = "scm-1"
+package = "libhttp"
+version = "1.0.0-1"
 source = {
-    url = "gitrec://github.com/mah0x211/lua-http.git"
+    url = "gitrec://github.com/mah0x211/lua-libhttp.git",
+    tag = "v1.0.0"
 }
 description = {
     summary = "HTTP protocol parser for lua",
-    homepage = "https://github.com/mah0x211/lua-http", 
+    homepage = "https://github.com/mah0x211/lua-libhttp",
     license = "MIT/X11",
     maintainer = "Masatoshi Teruya"
 }
