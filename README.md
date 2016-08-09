@@ -139,15 +139,18 @@ parse HTTP response.
 - `-8`: invalid header format
 - `-9`: too many headers
 - `-10`: header-length too large
-- `-11`: invalid status code  
-    this code is returned only from the `parseResponse` and `parseResponsePtr`
+
+following code is returned only from the `parseResponse` and `parseResponsePtr`
+
+- `-11`: invalid status code
+- `-12`: invalid reason-phrase
 
 
 ## Usage
 
 ```lua
-local reqstr = 
-    "GET /wp-content/uploa<ds/2010/03/hello-kitty-darth-vader-pink.jpg HTTP/1.1\r\n" ..
+local reqstr =
+    "GET /wp-content/uploads/2010/03/hello-kitty-darth-vader-pink.jpg HTTP/1.1\r\n" ..
     "Host: www.kittyhell.com\r\n" ..
     "User-Agent: Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10.6; ja-JP-mac; rv:1.9.2.3) Gecko/20100401 Firefox/3.6.3 Pathtraq/0.9\r\n" ..
     "Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\r\n" ..
@@ -162,7 +165,7 @@ local reqstr =
     "\r\n";
 local parser = require('libhttp').new();
 local req = {
-	header = {}	
+	header = {}
 };
 local rc = parse:parseRequest( req, req.header, reqstr );
 ```
