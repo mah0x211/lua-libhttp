@@ -307,6 +307,20 @@ LUALIB_API int luaopen_libhttp( lua_State *L )
     lua_createtable( L, 0, 1 );
     lstate_fn2tbl( L, "new", new_lua );
     // constants
+    // return code
+    lstate_num2tbl( L, "SUCCESS", HTTP_SUCCESS );
+    lstate_num2tbl( L, "ERROR", HTTP_ERROR );
+    lstate_num2tbl( L, "EAGAIN", HTTP_EAGAIN );
+    lstate_num2tbl( L, "EMETHOD", HTTP_EMETHOD );
+    lstate_num2tbl( L, "EBADURI", HTTP_EBADURI );
+    lstate_num2tbl( L, "EURILEN", HTTP_EURILEN );
+    lstate_num2tbl( L, "EVERSION", HTTP_EVERSION );
+    lstate_num2tbl( L, "ELINEFMT", HTTP_ELINEFMT );
+    lstate_num2tbl( L, "EHDRFMT", HTTP_EHDRFMT );
+    lstate_num2tbl( L, "ENHDR", HTTP_ENHDR );
+    lstate_num2tbl( L, "EHDRLEN", HTTP_EHDRLEN );
+    lstate_num2tbl( L, "ESTATUS", HTTP_ESTATUS );
+    lstate_num2tbl( L, "EREASON", HTTP_EREASON );
     // methods
     lstate_num2tbl( L, "MGET", HTTP_MGET );
     lstate_num2tbl( L, "MHEAD", HTTP_MHEAD );
