@@ -128,22 +128,23 @@ parse HTTP response.
 
 **Return Code**
 
-- `0`: success
-- `-1`: probably, data structure is corrupted
-- `-2`: need more bytes
-- `-3`: method not implemented
-- `-4`: invalid uri string
-- `-5`: uri-length too large
-- `-6`: version not support
-- `-7`: invalid line format
-- `-8`: invalid header format
-- `-9`: too many headers
-- `-10`: header-length too large
+- `libhttp.SUCCESS`: success
+- `libhttp.ERROR`: probably, data structure is corrupted
+- `libhttp.EAGAIN`: need more bytes
+- `libhttp.EMETHOD`: method not implemented
+- `libhttp.EBADURI`: invalid uri string
+- `libhttp.EURILEN`: uri-length too large
+- `libhttp.EVERSION`: version not support
+- `libhttp.ELINEFMT`: invalid line format
+- `libhttp.EHDRFMT`: invalid header format
+- `libhttp.ENHDR`: too many headers
+- `libhttp.EHDRLEN`: header-length too large
+
 
 following code is returned only from the `parseResponse` and `parseResponsePtr`
 
-- `-11`: invalid status code
-- `-12`: invalid reason-phrase
+- `libhttp.ESTATUS`: invalid status code
+- `libhttp.EREASON`: invalid reason-phrase
 
 
 ## Usage
