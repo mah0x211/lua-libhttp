@@ -1,11 +1,11 @@
 /*
  *  Copyright 2015 Masatoshi Teruya. All rights reserved.
  *
- *  Permission is hereby granted, free of charge, to any person obtaining a 
- *  copy of this software and associated documentation files (the "Software"), 
- *  to deal in the Software without restriction, including without limitation 
- *  the rights to use, copy, modify, merge, publish, distribute, sublicense, 
- *  and/or sell copies of the Software, and to permit persons to whom the 
+ *  Permission is hereby granted, free of charge, to any person obtaining a
+ *  copy of this software and associated documentation files (the "Software"),
+ *  to deal in the Software without restriction, including without limitation
+ *  the rights to use, copy, modify, merge, publish, distribute, sublicense,
+ *  and/or sell copies of the Software, and to permit persons to whom the
  *  Software is furnished to do so, subject to the following conditions:
  *
  *  The above copyright notice and this permission notice shall be included in
@@ -13,10 +13,10 @@
  *
  *  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  *  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- *  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.  IN NO EVENT SHALL 
+ *  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.  IN NO EVENT SHALL
  *  THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- *  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING 
- *  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER 
+ *  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ *  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
  *  DEALINGS IN THE SOFTWARE.
  *
  *  lhttp.c
@@ -92,7 +92,7 @@ static inline int parse_request( lua_State *L, lhttp_t *h, char *buf, size_t len
 {
     http_t *r = h->r;
     int rc = 0;
-    
+
     luaL_checktype( L, 2, LUA_TTABLE );
     luaL_checktype( L, 3, LUA_TTABLE );
     rc = http_req_parse( r, buf, len, h->maxurilen, h->maxhdrlen );
@@ -104,7 +104,7 @@ static inline int parse_request( lua_State *L, lhttp_t *h, char *buf, size_t len
         uint16_t klen = 0;
         uintptr_t val = 0;
         uint16_t vlen = 0;
-        
+
         // export to table
         lua_settop( L, 3 );
         // add to header table
@@ -119,10 +119,10 @@ static inline int parse_request( lua_State *L, lhttp_t *h, char *buf, size_t len
         // initialize
         http_init( r );
     }
-    
+
     // add status
     lua_pushinteger( L, rc );
-    
+
     return 1;
 }
 
@@ -132,7 +132,7 @@ static int parse_request_lua( lua_State *L )
     lhttp_t *h = luaL_checkudata( L, 1, MODULE_MT );
     size_t len = 0;
     char *buf = (char*)luaL_checklstring( L, 4, &len );
-    
+
     return parse_request( L, h, buf, len );
 }
 
@@ -142,18 +142,18 @@ static int parse_request_ptr_lua( lua_State *L )
     lhttp_t *h = luaL_checkudata( L, 1, MODULE_MT );
     char *buf = (char*)lua_topointer( L, 4 );
     size_t len = luaL_checkinteger( L, 5 );
-    
-    
+
+
     return parse_request( L, h, buf, len );
 }
 
 
-static inline int parse_response( lua_State *L, lhttp_t *h, char *buf, 
+static inline int parse_response( lua_State *L, lhttp_t *h, char *buf,
                                   size_t len )
 {
     http_t *r = h->r;
     int rc = 0;
-    
+
     luaL_checktype( L, 2, LUA_TTABLE );
     luaL_checktype( L, 3, LUA_TTABLE );
     rc = http_res_parse( r, buf, len, h->maxhdrlen );
@@ -165,7 +165,7 @@ static inline int parse_response( lua_State *L, lhttp_t *h, char *buf,
         uint16_t klen = 0;
         uintptr_t val = 0;
         uint16_t vlen = 0;
-        
+
         // export to table
         lua_settop( L, 3 );
         // add to header table
@@ -180,10 +180,10 @@ static inline int parse_response( lua_State *L, lhttp_t *h, char *buf,
         // initialize
         http_init( r );
     }
-    
+
     // add status
     lua_pushinteger( L, rc );
-    
+
     return 1;
 }
 
@@ -193,7 +193,7 @@ static int parse_response_lua( lua_State *L )
     lhttp_t *h = luaL_checkudata( L, 1, MODULE_MT );
     size_t len = 0;
     char *buf = (char*)luaL_checklstring( L, 4, &len );
-    
+
     return parse_response( L, h, buf, len );
 }
 
@@ -203,7 +203,7 @@ static int parse_response_ptr_lua( lua_State *L )
     lhttp_t *h = luaL_checkudata( L, 1, MODULE_MT );
     char *buf = (char*)lua_topointer( L, 4 );
     size_t len = luaL_checkinteger( L, 5 );
-    
+
     return parse_response( L, h, buf, len );
 }
 
@@ -211,9 +211,9 @@ static int parse_response_ptr_lua( lua_State *L )
 static int init_lua( lua_State *L )
 {
     lhttp_t *h = luaL_checkudata( L, 1, MODULE_MT );
-    
+
     http_init( h->r );
-    
+
     return 0;
 }
 
@@ -238,7 +238,7 @@ static int new_lua( lua_State *L )
     int maxurilen = (int)luaL_optinteger( L, 1, DEFAULT_MAX_URILEN );
     int maxhdrlen = (int)luaL_optinteger( L, 2, DEFAULT_MAX_HDRLEN );
     int maxhdr = (int)luaL_optinteger( L, 3, DEFAULT_MAX_HDR );
-    
+
     if( maxurilen > UINT16_MAX ){
         return luaL_argerror( L, 1, "maxurilen must be less than UINT16_MAX" );
     }
@@ -256,11 +256,11 @@ static int new_lua( lua_State *L )
         lua_setmetatable( L, -2 );
         return 1;
     }
-    
+
     // got error
     lua_pushnil( L );
     lua_pushstring( L, strerror( errno ) );
-    
+
     return 2;
 }
 
@@ -282,7 +282,7 @@ LUALIB_API int luaopen_libhttp( lua_State *L )
         { NULL, NULL }
     };
     struct luaL_Reg *ptr = mmethods;
-    
+
     // create metatable
     luaL_newmetatable( L, MODULE_MT );
     // metamethods
@@ -301,8 +301,8 @@ LUALIB_API int luaopen_libhttp( lua_State *L )
     lua_rawset( L, -3 );
     // remove metatable from stack
     lua_pop( L, 1 );
-    
-    
+
+
     // register allocator
     lua_createtable( L, 0, 1 );
     lstate_fn2tbl( L, "new", new_lua );
